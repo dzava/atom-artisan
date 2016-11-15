@@ -1,0 +1,235 @@
+[
+  {
+    "name": "clear-compiled",
+    "command": "clear-compiled"
+  },
+  {
+    "name": "down",
+    "command": "down"
+  },
+  {
+    "name": "env",
+    "command": "env"
+  },
+  {
+    "name": "help",
+    "command": "help"
+  },
+  {
+    "name": "list",
+    "command": "list"
+  },
+  {
+    "name": "optimize",
+    "command": "optimize"
+  },
+  {
+    "name": "up",
+    "command": "up"
+  },
+  {
+    "name": "app name",
+    "command": "app:name",
+    "needsInput": true
+  },
+  {
+    "name": "auth clear-resets",
+    "command": "auth:clear-resets"
+  },
+  {
+    "name": "cache clear",
+    "command": "cache:clear"
+  },
+  {
+    "name": "cache table",
+    "command": "cache:table"
+  },
+  {
+    "name": "config cache",
+    "command": "config:cache"
+  },
+  {
+    "name": "config clear",
+    "command": "config:clear"
+  },
+  {
+    "name": "db seed",
+    "command": "db:seed"
+  },
+  {
+    "name": "event generate",
+    "command": "event:generate"
+  },
+  {
+    "name": "key generate",
+    "command": "key:generate"
+  },
+  {
+    "name": "make auth",
+    "command": "make:auth"
+  },
+  {
+    "name": "make command",
+    "command": "make:command",
+    "needsInput": true
+  },
+  {
+    "name": "make controller",
+    "command": "make:controller",
+    "needsInput": true
+  },
+  {
+    "name": "make event",
+    "command": "make:event",
+    "needsInput": true
+  },
+  {
+    "name": "make job",
+    "command": "make:job",
+    "needsInput": true
+  },
+  {
+    "name": "make listener",
+    "command": "make:listener",
+    "needsInput": true
+  },
+  {
+    "name": "make mail",
+    "command": "make:mail",
+    "needsInput": true
+  },
+  {
+    "name": "make middleware",
+    "command": "make:middleware",
+    "needsInput": true
+  },
+  {
+    "name": "make migration",
+    "command": "make:migration",
+    "needsInput": true
+  },
+  {
+    "name": "make model",
+    "command": "make:model",
+    "needsInput": true
+  },
+  {
+    "name": "make notification",
+    "command": "make:notification",
+    "needsInput": true
+  },
+  {
+    "name": "make policy",
+    "command": "make:policy",
+    "needsInput": true
+  },
+  {
+    "name": "make provider",
+    "command": "make:provider",
+    "needsInput": true
+  },
+  {
+    "name": "make request",
+    "command": "make:request",
+    "needsInput": true
+  },
+  {
+    "name": "make seeder",
+    "command": "make:seeder",
+    "needsInput": true
+  },
+  {
+    "name": "make test",
+    "command": "make:test",
+    "needsInput": true
+  },
+  {
+    "name": "migrate",
+    "command": "migrate"
+  },
+  {
+    "name": "migrate install",
+    "command": "migrate:install"
+  },
+  {
+    "name": "migrate refresh",
+    "command": "migrate:refresh"
+  },
+  {
+    "name": "migrate reset",
+    "command": "migrate:reset"
+  },
+  {
+    "name": "migrate rollback",
+    "command": "migrate:rollback"
+  },
+  {
+    "name": "migrate status",
+    "command": "migrate:status"
+  },
+  {
+    "name": "notifications table",
+    "command": "notifications:table"
+  },
+  {
+    "name": "queue failed",
+    "command": "queue:failed"
+  },
+  {
+    "name": "queue failed-table",
+    "command": "queue:failed-table"
+  },
+  {
+    "name": "queue flush",
+    "command": "queue:flush"
+  },
+  {
+    "name": "queue forget",
+    "command": "queue:forget"
+  },
+  {
+    "name": "queue restart",
+    "command": "queue:restart"
+  },
+  {
+    "name": "queue retry",
+    "command": "queue:retry",
+    "needsInput": true
+  },
+  {
+    "name": "queue table",
+    "command": "queue:table"
+  },
+  {
+    "name": "route cache",
+    "command": "route:cache"
+  },
+  {
+    "name": "route clear",
+    "command": "route:clear"
+  },
+  {
+    "name": "route list",
+    "command": "route:list"
+  },
+  {
+    "name": "schedule run",
+    "command": "schedule:run"
+  },
+  {
+    "name": "session table",
+    "command": "session:table"
+  },
+  {
+    "name": "storage link",
+    "command": "storage:link"
+  },
+  {
+    "name": "vendor publish",
+    "command": "vendor:publish"
+  },
+  {
+    "name": "view clear",
+    "command": "view:clear"
+  }
+]

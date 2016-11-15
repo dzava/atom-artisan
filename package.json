@@ -1,0 +1,18 @@
+{
+  "name": "artisan",
+  "main": "./lib/artisan",
+  "version": "0.0.0",
+  "description": "Laravel artisan commands inside Atom",
+  "keywords": [
+    "laravel",
+    "artisan"
+  ],
+  "repository": "https://github.com/dzava/atom-artisan",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.2.0"
+  }
+}
