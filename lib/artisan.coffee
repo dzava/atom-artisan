@@ -74,18 +74,26 @@ module.exports = Artisan =
     )
 
   onCommandSuccess: (detail, code) ->
-    if atom.config.get('artisan.notifications')
+    return unless atom.config.get('artisan.notifications')
+
+    if detail.match(/(already exists)|(nothing)|(matches the given)/i)
       atom.notifications.addInfo(
+        'Command finished',
+        {detail}
+      )
+    else
+      atom.notifications.addSuccess(
         'Command finished',
         {detail}
       )
 
   onCommandError: (detail, code) ->
-    if atom.config.get('artisan.notifications')
-      atom.notifications.addError(
-        'Command failed',
-        {detail}
-      )
+    return unless atom.config.get('artisan.notifications')
+
+    atom.notifications.addError(
+      'Command failed',
+      {detail}
+    )
 
   artisanPath: ->
     for projectRoot in atom.project.getPaths()
