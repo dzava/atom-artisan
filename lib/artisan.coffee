@@ -1,10 +1,12 @@
 fs = require 'fs'
 path = require 'path'
 AskView = require './ask-view'
+ResultView = require './result-view'
 {CompositeDisposable, BufferedProcess} = require 'atom'
 
 module.exports = Artisan =
   subscriptions: null
+  command: null
   config:
     php:
       default: 'php'
@@ -40,26 +42,27 @@ module.exports = Artisan =
 
   onCommand: (command) ->
     return unless @itsLaravelProject()
+    @command = command
 
-    if command.needsInput
-      @askForInput(command.caption, (input) =>
-        @runCommand(command, input)
+    if @command.needsInput
+      @askForInput(@command.caption, (input) =>
+        @runCommand(input)
       )
     else
-      @runCommand(command, null)
+      @runCommand(null)
 
-  runCommand: (command, input) ->
+  runCommand: (input) ->
     phpBinary = atom.config.get('artisan.php')
     args = [
       @artisanPath(),
-      command.command,
+      @command.command,
     ]
 
     if input
       args = args.concat(input.split(/\s+/))
 
     @execute(phpBinary, args)
-      .then(@onCommandSuccess)
+      .then((output, code) => @onCommandSuccess(output, code))
       .catch(@onCommandError)
 
   execute: (command, args) ->
@@ -74,6 +77,9 @@ module.exports = Artisan =
     )
 
   onCommandSuccess: (detail, code) ->
+    if @command.showInPanel
+      return new ResultView(@command.panelHeading, detail)
+
     return unless atom.config.get('artisan.notifications')
 
     if detail.match(/(already exists)|(nothing)|(matches the given)/i)

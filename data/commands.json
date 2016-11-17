@@ -13,11 +13,17 @@
   },
   {
     "name": "help",
-    "command": "help"
+    "command": "help",
+    "needsInput": true,
+    "caption": "Enter the command you need help with",
+    "showInPanel": true,
+    "panelHeading": "Route list"
   },
   {
     "name": "list",
-    "command": "list"
+    "command": "list",
+    "showInPanel": true,
+    "panelHeading": "Command list"
   },
   {
     "name": "optimize",
@@ -229,7 +235,9 @@
   },
   {
     "name": "route list",
-    "command": "route:list"
+    "command": "route:list",
+    "showInPanel": true,
+    "panelHeading": "Route list"
   },
   {
     "name": "schedule run",
