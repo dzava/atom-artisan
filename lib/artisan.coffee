@@ -1,8 +1,7 @@
-fs = require 'fs'
-path = require 'path'
 AskView = require './ask-view'
 ResultView = require './result-view'
-{CompositeDisposable, BufferedProcess} = require 'atom'
+{CompositeDisposable} = require 'atom'
+{loadJSON, config, isFile, execute, unique} = require './utils'
 
 module.exports = Artisan =
   subscriptions: null
@@ -16,6 +15,10 @@ module.exports = Artisan =
       default: true
       type: 'boolean'
       title: 'Show notifications'
+    customCommands:
+      default: ''
+      type: 'string'
+      description: 'A JSON file containing custom commands'
 
   activate: (state) ->
     @subscriptions = new CompositeDisposable
@@ -25,11 +28,7 @@ module.exports = Artisan =
     @subscriptions.dispose()
 
   registerCommands: ->
-    commands = JSON.parse(
-      fs.readFileSync(
-        path.join(__dirname, '..', 'data', 'commands.json')
-      )
-    )
+    commands = @loadCommands()
 
     commands.forEach (command) =>
       commandName = 'artisan:' + command.name
@@ -39,6 +38,17 @@ module.exports = Artisan =
           "#{commandName}": => @onCommand(command)
         )
       )
+
+  loadCommands: ->
+    commands = loadJSON([
+      __dirname, '..', 'data', 'commands.json'
+    ])
+
+    if isFile(config('artisan.customCommands'))
+      customCommands = loadJSON(config('artisan.customCommands'))
+      commands = unique(customCommands.concat(commands), (c) -> c.name )
+
+    return commands
 
   onCommand: (command) ->
     return unless @itsLaravelProject()
@@ -52,7 +62,7 @@ module.exports = Artisan =
       @runCommand(null)
 
   runCommand: (input) ->
-    phpBinary = atom.config.get('artisan.php')
+    phpBinary = config('artisan.php')
     args = [
       @artisanPath(),
       @command.command,
@@ -61,26 +71,15 @@ module.exports = Artisan =
     if input
       args = args.concat(input.split(/\s+/))
 
-    @execute(phpBinary, args)
+    execute(phpBinary, args)
       .then((output, code) => @onCommandSuccess(output, code))
       .catch(@onCommandError)
-
-  execute: (command, args) ->
-    new Promise((resolve, reject) ->
-      @output = ''
-      new BufferedProcess({
-        command,
-        args,
-        stdout: (data) => @output += data
-        exit: (code) => if code == 0 then resolve(@output, code) else reject(@output, code)
-      })
-    )
 
   onCommandSuccess: (detail, code) ->
     if @command.showInPanel
       return new ResultView(@command.panelHeading, detail)
 
-    return unless atom.config.get('artisan.notifications')
+    return unless config('artisan.notifications')
 
     if detail.match(/(already exists)|(nothing)|(matches the given)/i)
       atom.notifications.addInfo(
@@ -94,7 +93,7 @@ module.exports = Artisan =
       )
 
   onCommandError: (detail, code) ->
-    return unless atom.config.get('artisan.notifications')
+    return unless config('artisan.notifications')
 
     atom.notifications.addError(
       'Command failed',
@@ -104,17 +103,10 @@ module.exports = Artisan =
   artisanPath: ->
     for projectRoot in atom.project.getPaths()
       parts = [projectRoot, 'artisan']
-      file = @isFile(parts)
+      file = isFile(parts)
       return file if file
 
     return null
-
-  isFile: (parts) ->
-    try
-      p = path.join(parts...)
-      return p if fs.lstatSync(p).isFile()
-    catch
-      return false
 
   itsLaravelProject: ->
     return true if @artisanPath()
