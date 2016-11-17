@@ -42,7 +42,7 @@ module.exports = Artisan =
     return unless @itsLaravelProject()
 
     if command.needsInput
-      @askForInput((input) =>
+      @askForInput(command.caption, (input) =>
         @runCommand(command, input)
       )
     else
@@ -105,7 +105,7 @@ module.exports = Artisan =
   itsLaravelProject: ->
     return true if @artisanPath()
 
-  askForInput: (callback) ->
-    new AskView((input) =>
+  askForInput: (caption, callback) ->
+    new AskView(caption, (input) =>
       callback(input)
     )

@@ -6,13 +6,15 @@ class AskView extends View
     @div class: 'ask-view', =>
       @div class: 'block', =>
         @label =>
-          @div class: 'settings-name', 'Name'
+          @span class: 'settings-name', outlet: 'caption'
         @subview 'command', new TextEditorView(mini: true)
 
-  initialize: (@callback) ->
+  initialize: (captionText, @callback) ->
     atom.commands.add @element,
       'core:confirm': @accept
       'core:cancel': @cancel
+
+    @caption.text(captionText)
 
     @panel ?= atom.workspace.addModalPanel(item: this)
     @panel.show()

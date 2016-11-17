@@ -30,7 +30,8 @@
   {
     "name": "app name",
     "command": "app:name",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter your desired namespace"
   },
   {
     "name": "auth clear-resets",
@@ -71,77 +72,92 @@
   {
     "name": "make command",
     "command": "make:command",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the command class"
   },
   {
     "name": "make controller",
     "command": "make:controller",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the controller class"
   },
   {
     "name": "make event",
     "command": "make:event",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the event class"
   },
   {
     "name": "make job",
     "command": "make:job",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the job class"
   },
   {
     "name": "make listener",
     "command": "make:listener",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the listener class"
   },
   {
     "name": "make mail",
     "command": "make:mail",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the mail"
   },
   {
     "name": "make middleware",
     "command": "make:middleware",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the middleware class"
   },
   {
     "name": "make migration",
     "command": "make:migration",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the migration"
   },
   {
     "name": "make model",
     "command": "make:model",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the model"
   },
   {
     "name": "make notification",
     "command": "make:notification",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the notification class"
   },
   {
     "name": "make policy",
     "command": "make:policy",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the policy class"
   },
   {
     "name": "make provider",
     "command": "make:provider",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the provider class"
   },
   {
     "name": "make request",
     "command": "make:request",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the request class"
   },
   {
     "name": "make seeder",
     "command": "make:seeder",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the seeder"
   },
   {
     "name": "make test",
     "command": "make:test",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the name of the test class"
   },
   {
     "name": "migrate",
@@ -185,7 +201,9 @@
   },
   {
     "name": "queue forget",
-    "command": "queue:forget"
+    "command": "queue:forget",
+    "needsInput": true,
+    "caption": "Enter the id of the failed job"
   },
   {
     "name": "queue restart",
@@ -194,7 +212,8 @@
   {
     "name": "queue retry",
     "command": "queue:retry",
-    "needsInput": true
+    "needsInput": true,
+    "caption": "Enter the id of the failed job"
   },
   {
     "name": "queue table",
