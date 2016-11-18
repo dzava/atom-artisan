@@ -32,11 +32,11 @@ class Utils
 
     return JSON.parse(fs.readFileSync(path))
 
-  @unique: (array, test) ->
+  @unique: (array, callback) ->
     result = []
     seen = []
     for item in array
-      computed = test(item)
+      computed = callback(item)
       if seen.indexOf(computed)
         seen.push(computed)
         result.push(item)
