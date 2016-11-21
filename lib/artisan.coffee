@@ -7,6 +7,7 @@ module.exports = Artisan =
   subscriptions: null
   command: null
   resultView: null
+  askView: null
   config:
     php:
       default: 'php'
@@ -28,6 +29,7 @@ module.exports = Artisan =
   deactivate: ->
     @subscriptions.dispose()
     @resultView?.dispose()
+    @askView?.dispose()
 
   registerCommands: ->
     commands = @loadCommands()
@@ -112,6 +114,5 @@ module.exports = Artisan =
     return true if @artisanPath()
 
   askForInput: (caption, callback) ->
-    new AskView(caption, (input) =>
-      callback(input)
-    )
+    @askView ?= new AskView()
+    @askView.ask(caption, (input) => callback(input))

@@ -2,6 +2,7 @@
 
 module.exports =
 class AskView extends View
+  callback: null
   @content: ->
     @div class: 'ask-view', =>
       @div class: 'block', =>
@@ -9,29 +10,35 @@ class AskView extends View
           @span class: 'settings-name', outlet: 'caption'
         @subview 'command', new TextEditorView(mini: true)
 
-  initialize: (captionText, @callback) ->
+  initialize: ->
     atom.commands.add @element,
       'core:confirm': @accept
       'core:cancel': @cancel
 
-    @caption.text(captionText)
-
     @panel ?= atom.workspace.addModalPanel(item: this)
-    @panel.show()
-    @command.focus()
 
   accept: (event) =>
     if (c = @command.getText()) isnt ''
-      @callback c
+      @callback? c
 
-    @panel?.hide()
+    @command.setText('')
     event.stopPropagation()
-    @dispose()
+    @hide()
+
+  ask: (caption, @callback) =>
+    @caption.text(caption)
+    @show()
+    @command.focus()
+
+  show: =>
+    @panel.show()
+
+  hide: =>
+    @panel.hide()
 
   cancel: (event) =>
-    @panel?.hide()
+    @hide()
     event.stopPropagation()
-    @dispose()
 
   dispose: ->
     @panel.destroy()
