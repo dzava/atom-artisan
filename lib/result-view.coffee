@@ -11,17 +11,17 @@ class ResultView extends View
         @pre '', outlet: 'result'
       @div class: 'artisan-resize-handle', outlet: 'resizeHandle'
 
-  initialize: (heading = 'Results', content) ->
+  initialize: () ->
     @on 'mousedown', '.artisan-resize-handle', (e) => @onResizeStart(e)
-
     @closeIcon.on('click', (e) => @close())
-
-    @result.text(content)
-    @header.text(heading)
-
     @panel = atom.workspace.addBottomPanel(item: this)
     @height('40vh')
-    @panel.show()
+
+  update: (content, heading) ->
+    @result.text(content) if content
+    @header.text(heading) if heading
+
+    return this
 
   onResizeStart: (e) =>
     $(document).on('mousemove', @resize)
@@ -38,5 +38,11 @@ class ResultView extends View
     height = @outerHeight() + @offset().top - pageY
     @height(height)
 
+  show: =>
+    @panel.show()
+
   close: =>
-    @panel.destroy()
+    @panel.hide()
+
+  dispose: =>
+    @panel?.destroy()

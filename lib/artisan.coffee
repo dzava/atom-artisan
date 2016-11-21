@@ -6,6 +6,7 @@ ResultView = require './result-view'
 module.exports = Artisan =
   subscriptions: null
   command: null
+  resultView: null
   config:
     php:
       default: 'php'
@@ -26,6 +27,7 @@ module.exports = Artisan =
 
   deactivate: ->
     @subscriptions.dispose()
+    @resultView?.dispose()
 
   registerCommands: ->
     commands = @loadCommands()
@@ -77,7 +79,9 @@ module.exports = Artisan =
 
   onCommandSuccess: (detail, code) ->
     if @command.showInPanel
-      return new ResultView(@command.panelHeading, detail)
+      @resultView ?= new ResultView()
+      @resultView.update(detail, @command.panelHeading).show()
+      return
 
     return unless config('artisan.notifications')
 

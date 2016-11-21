@@ -17,7 +17,7 @@
     "needsInput": true,
     "caption": "Enter the command you need help with",
     "showInPanel": true,
-    "panelHeading": "Route list"
+    "panelHeading": "Command help"
   },
   {
     "name": "list",
