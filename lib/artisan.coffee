@@ -56,12 +56,8 @@ module.exports = Artisan =
     return unless @itsLaravelProject()
     @command = command
 
-    if @command.needsInput
-      @askForInput(@command.caption, (input) =>
-        @runCommand(input)
-      )
-    else
-      @runCommand(null)
+    return @runCommand(null) unless @command.needsInput
+    @askForInput(@command.caption, (input) => @runCommand(input))
 
   runCommand: (input) ->
     phpBinary = config('artisan.php')
