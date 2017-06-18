@@ -1,6 +1,6 @@
 {
   "name": "artisan",
-  "main": "./lib/artisan",
+  "main": "./lib/artisan.js",
   "version": "0.2.0",
   "description": "Laravel artisan commands inside Atom",
   "keywords": [
@@ -13,6 +13,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "atom-space-pen-views": "^2.2.0"
+  },
+  "deserializers": {
+    "artisan/ResultView": "deserializeResultView"
   }
 }

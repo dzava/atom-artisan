@@ -1,3 +1,9 @@
+## 0.3.0
+* Added option to disable the package provided commands
+* Output panel now uses docks
+* Removed dependency on space-pens
+* Moved to JavaScript
+
 ## 0.2.0
 * Custom commands
 * Show command output in a panel (route:list, help, list)
