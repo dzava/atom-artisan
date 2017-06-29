@@ -1,7 +1,7 @@
 {
   "name": "artisan",
   "main": "./lib/artisan.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Laravel artisan commands inside Atom",
   "keywords": [
     "laravel",
@@ -12,8 +12,7 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "deserializers": {
     "artisan/ResultView": "deserializeResultView"
   }
