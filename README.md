@@ -16,13 +16,12 @@ Set the `Custom commands` setting to a JSON file containing custom commands. Cus
   "name": "the name that will appear in the command menu",
   "command": "the artisan command to run",
   "needsInput": true,
-  "caption": "the message that will display when asking for input",
-  "showInPanel": true,
-  "panelHeading": ""
+  "caption": "the message that will be displayed when asking for input",
+  "showInPanel": true
 }
 ```
 
 ### Notes
 
-- The command will run on the first valid laravel project (a project where artisan exists in the project root).
+- The command will run on the first valid Laravel project (a project where artisan exists in the project root).
 - Commands that require long running processes are not supported (queue:work, serve).

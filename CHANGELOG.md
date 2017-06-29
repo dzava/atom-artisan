@@ -3,6 +3,7 @@
 * Output panel now uses docks
 * Removed dependency on space-pens
 * Moved to JavaScript
+* Added schedule:finish command
 
 ## 0.2.0
 * Custom commands
