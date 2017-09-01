@@ -1,3 +1,6 @@
+## 0.3.1
+* Fix custom commands not loading
+
 ## 0.3.0
 * Added option to disable the package provided commands
 * Output panel now uses docks
