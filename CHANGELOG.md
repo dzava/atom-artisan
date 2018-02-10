@@ -1,3 +1,16 @@
+## 0.3.2
+* Can specify a subfolder if artisan is not in the root of your project
+* Added preset command
+* Added make:channel
+* Added make:exception
+* Added make:factory
+* Added make:resource
+* Added make:rule
+* Added migrate:fresh
+* Added package:discover
+* Removed optimize command
+* queue:retry will ask for input
+
 ## 0.3.1
 * Fix custom commands not loading
 

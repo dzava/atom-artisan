@@ -28,8 +28,10 @@
         "name": "migrate"
     },
     {
-        "command": "optimize",
-        "name": "optimize"
+        "caption": "Enter the preset type (none, bootstrap, vue, react)",
+        "command": "preset",
+        "name": "preset",
+        "needsInput": true
     },
     {
         "command": "up",
@@ -84,6 +86,12 @@
         "name": "make auth"
     },
     {
+        "caption": "Enter the name of the class",
+        "command": "make:channel",
+        "name": "make channel",
+        "needsInput": true
+    },
+    {
         "caption": "Enter the name of the command.",
         "command": "make:command",
         "name": "make command",
@@ -99,6 +107,18 @@
         "caption": "Enter the name of the class",
         "command": "make:event",
         "name": "make event",
+        "needsInput": true
+    },
+    {
+        "caption": "Enter the name of the class",
+        "command": "make:exception",
+        "name": "make exception",
+        "needsInput": true
+    },
+    {
+        "caption": "Enter the name of the class",
+        "command": "make:factory",
+        "name": "make factory",
         "needsInput": true
     },
     {
@@ -163,6 +183,18 @@
     },
     {
         "caption": "Enter the name of the class",
+        "command": "make:resource",
+        "name": "make resource",
+        "needsInput": true
+    },
+    {
+        "caption": "Enter the name of the class",
+        "command": "make:rule",
+        "name": "make rule",
+        "needsInput": true
+    },
+    {
+        "caption": "Enter the name of the class",
         "command": "make:seeder",
         "name": "make seeder",
         "needsInput": true
@@ -172,6 +204,10 @@
         "command": "make:test",
         "name": "make test",
         "needsInput": true
+    },
+    {
+        "command": "migrate:fresh",
+        "name": "migrate fresh"
     },
     {
         "command": "migrate:install",
@@ -198,6 +234,10 @@
         "name": "notifications table"
     },
     {
+        "command": "package:discover",
+        "name": "package discover"
+    },
+    {
         "command": "queue:failed",
         "name": "queue failed"
     },
@@ -210,7 +250,7 @@
         "name": "queue flush"
     },
     {
-        "caption": "Enter the id of the failed job",
+        "caption": "Enter the id of the failed job.",
         "command": "queue:forget",
         "name": "queue forget",
         "needsInput": true
@@ -220,8 +260,10 @@
         "name": "queue restart"
     },
     {
+        "caption": "Enter the id of the failed job or \"all\" to retry all jobs.",
         "command": "queue:retry",
-        "name": "queue retry"
+        "name": "queue retry",
+        "needsInput": true
     },
     {
         "command": "queue:table",
